@@ -21,7 +21,7 @@ app.use(express.json());
 app.use(logger());
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('Bienvenido');
+  res.send('Wellcome...');
 });
 
 app.use('/v1/client', clientRoutes);
