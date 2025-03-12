@@ -24,10 +24,16 @@ jobs:
           password: ${{ secrets.DO_ACCESS_TOKEN }}
 
       - name: Set version tag
-        run: echo "VERSION_TAG=v${{ github.sha }}" >> $GITHUB_ENV # Usamos run_id de GitHub como tag único
+        run: echo "IMAGE_TAG=v${{ github.sha }}" >> $GITHUB_ENV # Usamos run_id de GitHub como tag único
 
       - name: Build and tag Docker image
-        run: docker build -t registry.digitalocean.com/dev-registry-2025/sys-backend:${{ env.VERSION_TAG }} .
+        run: docker build -t registry.digitalocean.com/dev-registry-2025/sys-backend:${{ env.IMAGE_TAG }} .
+
+      - name: Replace image tag in app.yaml
+        run: sed -i 's/TAG_PLACEHOLDER/'"$IMAGE_TAG"'/g' app.yaml
+
+      - name: Push Docker image to DigitalOcean Registry
+        run: docker push registry.digitalocean.com/dev-registry-2025/sys-backend:${{ env.IMAGE_TAG }}
 
       - name: Install DigitalOcean CLI
         run: |
@@ -42,9 +48,6 @@ jobs:
 
       - name: Login to DigitalOcean Container Registry
         run: doctl registry login
-
-      - name: Push Docker image to DigitalOcean Registry
-        run: docker push registry.digitalocean.com/dev-registry-2025/sys-backend:${{ env.VERSION_TAG }}
 
       - name: Verify Image in DigitalOcean Registry
         run: doctl registry repository list-tags sys-backend
