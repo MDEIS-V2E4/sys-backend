@@ -29,3 +29,9 @@ export const clientFindById = async (id: number): Promise<IClient | null> => {
   const res = await pool.query(`select * from clients where id = $1`, [id]);
   return res.rows.length > 0 ? res.rows[0] : null;
 };
+
+export const deleteClient = async (id: string): Promise<boolean> => {
+  const res = (await pool.query(`delete from clients where id = $1`, [id])) || { rowCount: 0 };
+  console.log(res);
+  return true;
+};

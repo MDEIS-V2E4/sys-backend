@@ -7,7 +7,7 @@ import { logger } from './utils/logger';
 import { Request, Response } from 'express';
 
 const app = express();
-const allowedOrigins = ['http://localhost:3000', 'https://sys-frontend-app-tom6q.ondigitalocean.app'];
+const allowedOrigins = ['http://localhost:8080', 'https://sys-frontend-app-tom6q.ondigitalocean.app'];
 // Configure CORS options
 const corsOptions = {
   origin: allowedOrigins, // Allow requests from your frontend
