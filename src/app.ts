@@ -4,6 +4,7 @@ import saleRoutes from './routes/sale.routes';
 import productRoutes from './routes/product.routes';
 import cors from 'cors';
 import { logger } from './utils/logger';
+import { Request, Response } from 'express';
 
 const app = express();
 // Configure CORS options
@@ -18,6 +19,10 @@ app.use(cors(corsOptions));
 app.use(express.json());
 
 app.use(logger());
+
+app.use('/v1/', (req: Request, res: Response) => {
+  res.send('Bienvenido');
+});
 
 app.use('/v1/client', clientRoutes);
 app.use('/v1/sale', saleRoutes);
