@@ -34,12 +34,6 @@ jobs:
         run: |
           docker push registry.digitalocean.com/dev-registry-2025/sys-backend:$IMAGE_TAG
 
-      - name: Verify Image in DigitalOcean Registry
-        run: doctl registry repository list-tags sys-backend
-
-      - name: Replace image tag in app.yaml
-        run: sed -i 's/TAG_PLACEHOLDER/'"$IMAGE_TAG"'/g' app.yaml
-
       - name: Install DigitalOcean CLI
         run: |
           curl -fsSL https://github.com/digitalocean/doctl/releases/download/v1.123.0/doctl-1.123.0-linux-amd64.tar.gz -o doctl.tar.gz
@@ -47,6 +41,12 @@ jobs:
           chmod +x doctl
           sudo mv doctl /usr/local/bin/
           doctl version  # Verifica si `doctl` se instaló correctamente
+
+      - name: Verify Image in DigitalOcean Registry
+        run: doctl registry repository list-tags sys-backend
+
+      - name: Replace image tag in app.yaml
+        run: sed -i 's/TAG_PLACEHOLDER/'"$IMAGE_TAG"'/g' app.yaml
 
       - name: Authenticate with DigitalOcean
         run: doctl auth init --access-token ${{ secrets.DO_ACCESS_TOKEN }}
