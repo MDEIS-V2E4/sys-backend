@@ -24,7 +24,7 @@ jobs:
           password: ${{ secrets.DO_ACCESS_TOKEN }}
 
       - name: Set version tag
-        run: echo "VERSION_TAG=v${{ github.run_id }}" >> $GITHUB_ENV # Usamos run_id de GitHub como tag único
+        run: echo "VERSION_TAG=v${{ github.sha }}" >> $GITHUB_ENV # Usamos run_id de GitHub como tag único
 
       - name: Build and tag Docker image
         run: docker build -t registry.digitalocean.com/dev-registry-2025/sys-backend:${{ env.VERSION_TAG }} .

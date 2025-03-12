@@ -5,7 +5,7 @@ services:
       registry_type: DOCR
       registry: dev-registry-2025
       repository: sys-backend
-      tag: v${{ github.run_id }}
+      tag: v${{ github.sha }}
     envs:
       - key: DB_HOST
         value: aws-0-us-west-1.pooler.supabase.com
