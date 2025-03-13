@@ -20,8 +20,8 @@ jobs:
         uses: docker/login-action@v2
         with:
           registry: registry.digitalocean.com
-          username: ${{ secrets.DO_USERNAME }}
-          password: ${{ secrets.DO_ACCESS_TOKEN }}
+          username: ${{ vars.DIGITALOCEAN_USERNAME }}
+          password: ${{ vars.DIGITALOCEAN_ACCESS_TOKEN }}
 
       - name: Set version tag
         run: echo "IMAGE_TAG=v${{ github.sha }}" >> $GITHUB_ENV # Usamos run_id de GitHub como tag único
@@ -44,7 +44,7 @@ jobs:
           doctl version  # Verifica si `doctl` se instaló correctamente
 
       - name: Authenticate with DigitalOcean
-        run: doctl auth init --access-token ${{ secrets.DO_ACCESS_TOKEN }}
+        run: doctl auth init --access-token ${{ vars.DIGITALOCEAN_ACCESS_TOKEN }}
 
       - name: Login to DigitalOcean Container Registry
         run: doctl registry login

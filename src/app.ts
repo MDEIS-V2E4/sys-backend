@@ -1,13 +1,12 @@
-import express from 'express';
+import express, { Request, Response } from 'express';
 import clientRoutes from './routes/client.routes';
 import saleRoutes from './routes/sale.routes';
 import productRoutes from './routes/product.routes';
 import cors from 'cors';
 import { logger } from './utils/logger';
-import { Request, Response } from 'express';
 
 const app = express();
-const allowedOrigins = ['http://localhost:8080', 'https://sys-frontend-app-tom6q.ondigitalocean.app'];
+const allowedOrigins = ['http://localhost:8080', 'https://sys-frontend-develop-3y58e.ondigitalocean.app'];
 // Configure CORS options
 const corsOptions = {
   origin: allowedOrigins, // Allow requests from your frontend
