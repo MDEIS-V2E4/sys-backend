@@ -1,5 +1,5 @@
 import { IClient } from '../models/client.model';
-import { clientFindByCiNit, clientList, clientSave, clientEdit, deleteClient } from '../repositories/client.repository';
+import { clientFindByCiNit, clientList, clientSave, clientEdit, deleteClient, clientFindById } from '../repositories/client.repository';
 import { response } from '../utils/response';
 
 export async function getClientListService(): Promise<any> {
@@ -69,6 +69,19 @@ export async function deleteClientService(id: string): Promise<any> {
       return response('No se pudo eliminar');
     }
     return response('Eliminado correctamente');
+  } catch (error: any) {
+    console.error(error);
+    throw response(error.message, {}, false);
+  }
+}
+
+export async function getClientByIdService(id: number): Promise<any> {
+  try {
+    const getClient = await clientFindById(id);
+    if (!getClient) {
+      return response('No hay datos');
+    }
+    return response('Datos del cliente', getClient);
   } catch (error: any) {
     console.error(error);
     throw response(error.message, {}, false);
