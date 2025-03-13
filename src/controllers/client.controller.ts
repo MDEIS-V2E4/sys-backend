@@ -1,5 +1,5 @@
 import { Request, Response } from 'express';
-import { registerClientService, getClientListService, getClientService, deleteClientService } from '../services/client.service';
+import { registerClientService, getClientListService, getClientService, deleteClientService, getClientByIdService } from '../services/client.service';
 
 export const registerClientController = async (req: Request, res: Response) => {
   try {
@@ -37,6 +37,17 @@ export const deleteClientController = async (req: Request, res: Response) => {
   try {
     const { id } = req.params;
     const result = await deleteClientService(id);
+    res.status(200).json(result);
+  } catch (error: any) {
+    console.log(error);
+    res.status(400).json(error);
+  }
+};
+
+export const getClientByIdController = async (req: Request, res: Response) => {
+  try {
+    const { id } = req.params;
+    const result = await getClientByIdService(Number(id));
     res.status(200).json(result);
   } catch (error: any) {
     console.log(error);
