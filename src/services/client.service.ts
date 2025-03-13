@@ -1,23 +1,6 @@
 import { IClient } from '../models/client.model';
-import { clientSave, clientFindByCiNit, clientList, deleteClient } from '../repositories/client.repository';
+import { clientFindByCiNit, clientList, clientSave, clientEdit, deleteClient } from '../repositories/client.repository';
 import { response } from '../utils/response';
-
-export async function registerClientService(clientData: IClient): Promise<any> {
-  try {
-    const savedClient = await clientSave(clientData);
-    const data = {
-      id: savedClient.id,
-      name: savedClient.name,
-      ciNit: savedClient.ci_nit,
-      documentType: savedClient.document_type,
-      email: savedClient.email,
-    };
-    return response('Cliente registrado correctamente', data);
-  } catch (error: any) {
-    console.log(error);
-    return response(error.message, {}, false);
-  }
-}
 
 export async function getClientListService(): Promise<any> {
   try {
@@ -42,6 +25,40 @@ export async function getClientService(cinit: string): Promise<any> {
   } catch (error: any) {
     console.error(error);
     throw response(error.message, {}, false);
+  }
+}
+
+export async function registerClientService(clientData: IClient): Promise<any> {
+  try {
+    const savedClient = await clientSave(clientData);
+    const data = {
+      id: savedClient.id,
+      name: savedClient.name,
+      ciNit: savedClient.ci_nit,
+      documentType: savedClient.document_type,
+      email: savedClient.email,
+    };
+    return response('Cliente registrado correctamente', data);
+  } catch (error: any) {
+    console.log(error);
+    return response(error.message, {}, false);
+  }
+}
+
+export async function updateClientService(clientData: IClient): Promise<any> {
+  try {
+    const savedClient = await clientEdit(clientData);
+    const data = {
+      id: savedClient.id,
+      name: savedClient.name,
+      ciNit: savedClient.ci_nit,
+      documentType: savedClient.document_type,
+      email: savedClient.email,
+    };
+    return response('Cliente editado correctamente', data);
+  } catch (error: any) {
+    console.log(error);
+    return response(error.message, {}, false);
   }
 }
 

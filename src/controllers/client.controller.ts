@@ -1,16 +1,5 @@
 import { Request, Response } from 'express';
-import { registerClientService, getClientListService, getClientService, deleteClientService } from '../services/client.service';
-
-export const registerClientController = async (req: Request, res: Response) => {
-  try {
-    const clientData = req.body;
-    const result = await registerClientService(clientData);
-    res.status(200).json(result);
-  } catch (error: any) {
-    console.log(error);
-    res.status(400).json(error);
-  }
-};
+import { getClientListService, getClientService, registerClientService, updateClientService, deleteClientService } from '../services/client.service';
 
 export const getClientListController = async (req: Request, res: Response) => {
   try {
@@ -26,6 +15,29 @@ export const getClientController = async (req: Request, res: Response) => {
   try {
     const { cinit } = req.params;
     const result = await getClientService(cinit);
+    res.status(200).json(result);
+  } catch (error: any) {
+    console.log(error);
+    res.status(400).json(error);
+  }
+};
+
+export const registerClientController = async (req: Request, res: Response) => {
+  try {
+    const clientData = req.body;
+    const result = await registerClientService(clientData);
+    res.status(200).json(result);
+  } catch (error: any) {
+    console.log(error);
+    res.status(400).json(error);
+  }
+};
+
+export const updateClientController = async (req: Request, res: Response) => {
+  try {
+    const clientData = req.body;
+    clientData.id = req.params.id;
+    const result = await updateClientService(clientData);
     res.status(200).json(result);
   } catch (error: any) {
     console.log(error);
