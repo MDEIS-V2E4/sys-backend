@@ -19,9 +19,9 @@ export const employeeSchema = z.object({
   job_title: z.string().min(1, { message: 'El cargo es obligatorio' }).optional(),
   salary: z
     .number()
-    .min(0, { message: 'El salario no puede ser menor a 0' })
+    .min(0.01, { message: 'El salario debe ser mayor que cero' })
     .optional(), 
   department_id: z.number().optional(), 
-  manager_id: z.number().optional(), 
+  manager_id: z.number().nullable().optional(),
   status: z.enum(['Active', 'Inactive']).optional(),
 });
