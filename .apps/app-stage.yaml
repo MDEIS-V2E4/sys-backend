@@ -1,4 +1,4 @@
-name: sys-backend-app
+name: sys-backend-stage
 services:
   - name: sys-backend
     image:
