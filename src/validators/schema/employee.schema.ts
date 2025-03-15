@@ -25,3 +25,10 @@ export const employeeSchema = z.object({
   manager_id: z.number().nullable().optional(),
   status: z.enum(['Active', 'Inactive']).optional(),
 });
+
+export const statusEmployeeSchema = z.object({
+  // id: z.number(), 
+  status: z.enum(['Active', 'Inactive']).refine((val) => val !== null, {
+    message: 'El estado es obligatorio', 
+  }),
+});
