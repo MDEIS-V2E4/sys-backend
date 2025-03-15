@@ -3,7 +3,7 @@ name: CI/CD Pipeline for DigitalOcean
 on:
   push:
     branches:
-      - develop
+      - stage
 
 jobs:
   build-and-deploy:
