@@ -8,15 +8,15 @@ import { logger } from './utils/logger';
 import { Request, Response } from 'express';
 
 const app = express();
-const allowedOrigins = ['http://localhost:8080', 'https://sys-frontend-app-tom6q.ondigitalocean.app'];
-// Configure CORS options
+const allowedOrigins = ['http://localhost:8080', 'https://sys-frontend-develop-3y58e.ondigitalocean.app'];
+
 const corsOptions = {
-  origin: allowedOrigins, // Allow requests from your frontend
-  methods: ['GET', 'POST', 'PUT', 'DELETE'], // Specify allowed methods
-  allowedHeaders: ['Content-Type', 'Authorization'], // Specify allowed headers
-  credentials: true, // If your frontend is sending cookies
+  origin: allowedOrigins,
+  methods: ['GET', 'POST', 'PUT', 'DELETE'],
+  allowedHeaders: ['Content-Type', 'Authorization'],
+  credentials: true,
 };
-// Configuración de middlewares
+
 app.use(cors(corsOptions));
 app.use(express.json());
 
