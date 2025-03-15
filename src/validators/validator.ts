@@ -1,6 +1,7 @@
 import { Request, Response, NextFunction } from 'express';
 import { saleSchema } from './schema/sale.schema';
 import { clientSchema } from './schema/client.schema';
+import { employeeSchema } from './schema/employee.schema';
 
 export const validateShema = (req: Request, res: Response, next: NextFunction) => {
   try {
@@ -8,6 +9,7 @@ export const validateShema = (req: Request, res: Response, next: NextFunction) =
     const valid: any = {
       '/v1/sale': saleSchema,
       '/v1/client': clientSchema,
+      '/v1/employee': employeeSchema,
     };
 
     const schema = valid[baseUrl] || null;
