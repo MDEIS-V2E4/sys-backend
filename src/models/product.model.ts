@@ -3,4 +3,5 @@ export interface IProduct {
   code?: string;
   name: string;
   price: number;
+  status?: 'Active' | 'Inactive';
 }
