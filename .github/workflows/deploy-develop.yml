@@ -28,7 +28,7 @@ jobs:
         run: ls -lh coverage/ || echo "No se encontró la carpeta coverage"
 
       - name: Verificar contenido de lcov.info
-        run: cat coverage/lcov.info | head -n 20 || echo "No se encontró coverage/lcov.info"
+        run: cat coverage/lcov.info | head -n 620 || echo "No se encontró coverage/lcov.info"
 
       - name: Run SonarQube Scan
         run: |
