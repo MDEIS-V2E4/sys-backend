@@ -27,7 +27,7 @@ app.use(express.json());
 app.use(logger());
 
 app.get('/', (req: Request, res: Response) => {
-  res.send('API REST nodejs and express...');
+  res.send('Texto de prueba');
 });
 
 app.use('/v1/client', clientRoutes);
