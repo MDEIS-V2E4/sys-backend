@@ -41,8 +41,8 @@ export const employeeEdit = async (employee: IEmployee): Promise<any> => {
     [id, first_name, last_name, email, phone, hire_date, job_title, salary, department_id, manager_id]
   );
 
-  const savedEmployee = result.rows[0];
-  return savedEmployee;
+  const editedEmployee = result.rows[0];
+  return editedEmployee;
 };
 
 export const employeeToggleStatus = async (employee: IEmployee): Promise<any> => {

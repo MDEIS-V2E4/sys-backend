@@ -20,6 +20,14 @@ describe('ProductRepository', () => {
     expect(products).toEqual(mockProducts);
   });
 
+  it('should return a null on productList', async () => {
+    pool.query = vi.fn().mockResolvedValue({
+      rows: [],
+    });
+    const clients = await productList();
+    expect(clients).toEqual(null);
+  });
+
   it('should return a product by id', async () => {
     const mockProduct: IProduct = { name: 'Product 1', price: 100 };
 
