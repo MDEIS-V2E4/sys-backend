@@ -36,6 +36,8 @@ jobs:
             -Dsonar.verbose=true \
             -Dsonar.projectKey=sys-backend-github \
             -Dsonar.sources=src \
+            -Dsonar.tests=src/tests \
+            -Dsonar.exclusions=**/*.test.ts,**/tests/** \
             -Dsonar.host.url=${{ vars.SONAR_HOST_URL }} \
             -Dsonar.login=${{ vars.SONAR_TOKEN }} \
             -Dsonar.javascript.lcov.reportPaths=coverage/lcov.info
