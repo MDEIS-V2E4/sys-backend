@@ -33,6 +33,7 @@ jobs:
       - name: Run SonarQube Scan
         run: |
           npx sonar-scanner \
+            -Dsonar.verbose=true \
             -Dsonar.projectKey=sys-backend-github \
             -Dsonar.sources=src \
             -Dsonar.host.url=${{ vars.SONAR_HOST_URL }} \
