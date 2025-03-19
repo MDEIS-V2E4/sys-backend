@@ -7,10 +7,8 @@ export async function getProductListService(): Promise<any> {
 
     return response('Listado de productos', products);
   } catch (error: any) {
-    if (error?.detail) {
-      throw new Error(error?.detail);
-    }
-    throw new Error('Error al obtener datos de la base de datos');
+    console.error(error);
+    throw response(error.message, {}, false);
   }
 }
 
@@ -20,9 +18,7 @@ export async function getProductService(id: string): Promise<any> {
 
     return response('Datos del producto', product);
   } catch (error: any) {
-    if (error?.detail) {
-      throw new Error(error?.detail);
-    }
-    throw new Error('Error al obtener datos de la base de datos');
+    console.error(error);
+    throw response(error.message, {}, false);
   }
 }

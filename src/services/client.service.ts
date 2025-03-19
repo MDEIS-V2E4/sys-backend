@@ -41,7 +41,7 @@ export async function registerClientService(clientData: IClient): Promise<any> {
     return response('Cliente registrado correctamente', data);
   } catch (error: any) {
     console.log(error);
-    return response(error.message, {}, false);
+    throw response(error.message, {}, false);
   }
 }
 
@@ -58,7 +58,7 @@ export async function updateClientService(clientData: IClient): Promise<any> {
     return response('Cliente editado correctamente', data);
   } catch (error: any) {
     console.log(error);
-    return response(error.message, {}, false);
+    throw response(error.message, {}, false);
   }
 }
 

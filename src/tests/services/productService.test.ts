@@ -21,6 +21,18 @@ describe('ProductService', () => {
     expect(product).toEqual(productExpected);
   });
 
+  it('should handle errors and throw a response getProductService', async () => {
+    const errorMessage = 'Database connection failed';
+
+    vi.spyOn(productRepository, 'productFindById').mockRejectedValue(new Error(errorMessage));
+
+    await expect(getProductService('1')).rejects.toEqual({
+      message: errorMessage,
+      data: {},
+      success: false,
+    });
+  });
+
   it('should return all products', async () => {
     const mockProducts = [
       { name: 'Product 1', price: 100 },
@@ -44,5 +56,17 @@ describe('ProductService', () => {
       success: true,
     };
     expect(products).toEqual(productsExpected);
+  });
+
+  it('should handle errors and throw a response getProductListService', async () => {
+    const errorMessage = 'Database connection failed';
+
+    vi.spyOn(productRepository, 'productList').mockRejectedValue(new Error(errorMessage));
+
+    await expect(getProductListService()).rejects.toEqual({
+      message: errorMessage,
+      data: {},
+      success: false,
+    });
   });
 });

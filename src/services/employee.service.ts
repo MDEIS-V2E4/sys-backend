@@ -34,7 +34,7 @@ export async function registerEmployeeService(employeeData: IEmployee): Promise<
     return response('Empleado registrado correctamente', data);
   } catch (error: any) {
     console.log(error);
-    return response(error.message, {}, false);
+    throw response(error.message, {}, false);
   }
 }
 
@@ -70,7 +70,7 @@ export async function updateEmployeeService(employeeData: IEmployee): Promise<an
     return response('Empleado editado correctamente', data);
   } catch (error: any) {
     console.log(error);
-    return response(error.message, {}, false);
+    throw response(error.message, {}, false);
   }
 }
 
@@ -84,6 +84,6 @@ export async function toggleStatusEmployeeService(employeeData: IEmployee): Prom
     return response('Estado de empleado modificado correctamente', data);
   } catch (error: any) {
     console.log(error);
-    return response(error.message, {}, false);
+    throw response(error.message, {}, false);
   }
 }
