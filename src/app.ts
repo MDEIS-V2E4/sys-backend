@@ -7,7 +7,12 @@ import cors from 'cors';
 import { logger } from './utils/logger';
 
 const app = express();
-const allowedOrigins = ['http://localhost:8080', 'https://sys-frontend-develop-3y58e.ondigitalocean.app'];
+const allowedOrigins = [
+  'http://localhost:8080',
+  'https://sys-frontend-develop-3y58e.ondigitalocean.app',
+  'https://sys-frontend-stage-cwjlt.ondigitalocean.app',
+  'https://sys-frontend-prod-6qwzu.ondigitalocean.app',
+];
 
 const corsOptions = {
   origin: allowedOrigins,
