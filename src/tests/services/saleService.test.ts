@@ -1,7 +1,7 @@
 import { describe, it, vi, expect } from 'vitest';
-import { registerSaleService } from '../services/sale.service';
+import { registerSaleService } from '../../services/sale.service';
 
-vi.mock('../services/sale.service');
+vi.mock('../../services/sale.service');
 
 describe('SaleService', () => {
   it('should return error when clientId not fount', async () => {
