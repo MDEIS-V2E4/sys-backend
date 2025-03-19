@@ -1,9 +1,9 @@
 import { describe, it, expect, vi } from 'vitest';
 import request from 'supertest';
-import app from '../app';
-import { registerSaleService } from '../services/sale.service';
+import app from '../../app';
+import { registerSaleService } from '../../services/sale.service';
 
-vi.mock('../services/sale.service');
+vi.mock('../../services/sale.service');
 
 describe('POST /v1/sale', () => {
   it('debería registrar una venta exitosamente', async () => {
