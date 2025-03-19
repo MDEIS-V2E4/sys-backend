@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
-import { registerClientService } from '../services/client.service';
+import { registerClientService } from '../../services/client.service';
 
-vi.mock('../services/client.service');
+vi.mock('../../services/client.service');
 
 describe('registerClientService', () => {
   it('debería registrar un cliente exitosamente', async () => {
