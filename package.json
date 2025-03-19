@@ -7,7 +7,7 @@
     "start": "node dist/index.js",
     "dev": "nodemon --watch src --exec ts-node src/index.ts",
     "test": "vitest run",
-    "coverage": "vitest run --coverage --coverage.reporter=lcov",
+    "coverage": "vitest run --coverage",
     "bdd": "yarn cucumber-js src/features/ --require-module ts-node/register --require src/features/step_definitions/*.ts",
     "scan": "sonar-scanner.bat -D\"sonar.projectKey=sys-backend\" -D\"sonar.sources=.\" -D\"sonar.host.url=http://159.65.183.98:9000\" -D\"sonar.login=sqp_773bd49dc3df2d1cc80091f891933adaee8445d0\""
   },
