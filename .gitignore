@@ -5,3 +5,6 @@ package-lock.json
 /dist
 .scannerwork
 /.idea
+# No ignores coverage en GitHub Actions
+coverage/
+!coverage/lcov.info

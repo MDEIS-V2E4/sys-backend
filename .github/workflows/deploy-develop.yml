@@ -24,6 +24,12 @@ jobs:
       - name: Run tests and generate coverage
         run: npm run coverage
 
+      - name: Verificar si el reporte de cobertura existe
+        run: ls -lh coverage/ || echo "No se encontró la carpeta coverage"
+
+      - name: Verificar contenido de lcov.info
+        run: cat coverage/lcov.info | head -n 20 || echo "No se encontró coverage/lcov.info"
+
       - name: Run SonarQube Scan
         run: |
           npx sonar-scanner \
