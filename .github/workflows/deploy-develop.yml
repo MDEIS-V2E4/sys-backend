@@ -22,7 +22,7 @@ jobs:
         run: npm install
 
       - name: Run tests and generate coverage
-        run: npx vitest --coverage
+        run: npm run coverage
 
       - name: Run SonarQube Scan
         run: |
