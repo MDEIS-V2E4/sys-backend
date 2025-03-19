@@ -1,6 +1,6 @@
 import { describe, it, vi, expect } from 'vitest';
-import pool from '../config/db';
-import { saleSave } from '../repositories/sale.repository';
+import pool from '../../config/db';
+import { saleSave } from '../../repositories/sale.repository';
 
 vi.mocked('../config/db');
 describe('SaleRepository', () => {

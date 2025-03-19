@@ -1,7 +1,7 @@
 import { describe, it, expect, vi } from 'vitest';
-import pool from '../config/db';
-import { clientSave } from '../repositories/client.repository';
-import { IClient } from '../models/client.model';
+import pool from '../../config/db';
+import { clientSave } from '../../repositories/client.repository';
+import { IClient } from '../../models/client.model';
 
 vi.mock('../config/db');
 
