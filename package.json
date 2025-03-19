@@ -23,7 +23,6 @@
   },
   "devDependencies": {
     "@cucumber/cucumber": "^11.0.1",
-    "@reportportal/agent-js-vitest": "^5.1.1",
     "@types/chai": "^5.0.0",
     "@types/cors": "^2.8.17",
     "@types/express": "^5.0.0",
